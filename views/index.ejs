@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= section %> - Dashboard</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="left-nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/reports">Reports</a></li>
+                <li><a href="/setting">Settings</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h1><%= section %></h1>
+            <div class="grid">
+                <div class="grid-item chart" data-labels="Red,Blue,Yellow,Green,Purple,Orange" data-values="12,19,3,5,2,3">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="grid-item" data-labels="January,February,March,April,May,June" data-values="5,10,15,20,25,30">MONTHS</div>
+                <div class="grid-item" data-labels="Sun,Mon,Tue,Wed,Thu,Fri" data-values="7,8,9,10,11,12">WEEK</div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/scripts.js"></script>
+</body>
+</html>

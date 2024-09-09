@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Dashboard</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="left-nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/reports" class="active">Reports</a></li>
+                <li><a href="/settings">Settings</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h1>Reports</h1>
+            <div class="reports-content">
+                
+                <!-- Monthly Sales Report -->
+                <h2>Monthly Sales Report</h2>
+                <p>Summary of sales performance for the last 6 months:</p>
+                <div class="chart-container">
+                    <canvas id="salesChart"></canvas>
+                </div>
+
+                <!-- Detailed Sales Report Table -->
+                <h2>Detailed Sales Report</h2>
+                <p>Here is a detailed breakdown of sales by product category:</p>
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Product Category</th>
+                            <th>January</th>
+                            <th>February</th>
+                            <th>March</th>
+                            <th>April</th>
+                            <th>May</th>
+                            <th>June</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Electronics</td>
+                            <td>$5,000</td>
+                            <td>$6,000</td>
+                            <td>$7,500</td>
+                            <td>$8,000</td>
+                            <td>$9,000</td>
+                            <td>$10,000</td>
+                        </tr>
+                        <tr>
+                            <td>Clothing</td>
+                            <td>$4,000</td>
+                            <td>$4,500</td>
+                            <td>$5,000</td>
+                            <td>$5,500</td>
+                            <td>$6,000</td>
+                            <td>$7,000</td>
+                        </tr>
+                        <tr>
+                            <td>Home & Kitchen</td>
+                            <td>$3,000</td>
+                            <td>$3,500</td>
+                            <td>$4,000</td>
+                            <td>$4,500</td>
+                            <td>$5,000</td>
+                            <td>$6,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Annual Performance -->
+                <h2>Annual Performance</h2>
+                <p>This section contains the annual performance metrics, including a comparison to the previous year:</p>
+                <div class="chart-container">
+                    <canvas id="annualPerformanceChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Script for Sales Chart -->
+    <script>
+        const salesCtx = document.getElementById('salesChart').getContext('2d');
+        const salesChart = new Chart(salesCtx, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Sales (in $)',
+                    data: [12000, 15000, 18000, 22000, 26000, 30000],
+                    backgroundColor: 'rgba(54, 162, 235, 0.8)', 
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 2,
+                    barThickness: 20
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+    <!-- Script for Annual Performance Chart -->
+    <script>
+        const annualCtx = document.getElementById('annualPerformanceChart').getContext('2d');
+        const annualPerformanceChart = new Chart(annualCtx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: '2023 Performance',
+                    data: [12000, 15000, 18000, 22000, 26000, 30000],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 2,
+                    fill: true
+                }, {
+                    label: '2022 Performance',
+                    data: [10000, 12000, 14000, 16000, 18000, 20000],
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderWidth: 2,
+                    fill: true
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
